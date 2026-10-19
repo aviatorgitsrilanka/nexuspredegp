@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#041126">
+  <title>NEXUS — بوابة VIP التعليمية</title>
+  <link rel="stylesheet" href="vip.css">
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="NEXUS — الصفحة الرئيسية"><span>N</span>NEXUS</a>
+    <div class="topbar-status">
+      <span class="status-pill"><i></i>النظام متصل</span>
+      <span class="training-pill">محاكاة تعليمية</span>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <a class="back-link" href="index.html" aria-label="العودة">←</a>
+
+    <section class="hero">
+      <div class="lock-icon" aria-hidden="true">▣</div>
+      <p class="eyebrow">NEXUS SECURITY LAB</p>
+      <h1>مطلوب وصول <span>VIP</span></h1>
+      <p class="lead">واجهة تدريبية لشرح بنية صفحات الدفع الوهمية. لا تتم معالجة أي دفعات حقيقية ولا يتم إرسال أي بيانات.</p>
+      <div class="timer"><span aria-hidden="true">⌛</span> مؤقت العرض: <b id="slotTimer" dir="ltr">13:31</b></div>
+    </section>
+
+    <section class="plans" aria-label="خيارات الوصول">
+      <article class="panel direct-panel">
+        <div class="panel-heading">
+          <span>ترخيص قياسي</span>
+          <strong dir="ltr">25.00 <small>USDT</small></strong>
+          <small dir="ltr">TRC-20 · SAMPLE</small>
+        </div>
+
+        <div class="qr-placeholder" aria-label="مكان رمز QR فارغ في النسخة التعليمية"></div>
+
+        <label class="field-label" for="wallet">عنوان المحفظة التجريبي</label>
+        <div class="copy-field" dir="ltr">
+          <button type="button" data-copy="wallet">نسخ</button>
+          <input id="wallet" value="123123123123213" readonly>
+        </div>
+
+        <ul class="features">
+          <li><i>✓</i> ترخيص عرض لمدة 7 أيام</li>
+          <li><i>✓</i> جميع الألعاب ظاهرة في المحاكاة</li>
+        </ul>
+
+        <button class="secondary-button demo-action" type="button">تأكيد الدفع عبر البوت</button>
+      </article>
+
+      <article class="panel sponsor-panel">
+        <span class="recommended">موصى به للعرض</span>
+        <div class="panel-heading green">
+          <span>مغطى في السيناريو التدريبي</span>
+          <strong>مجانًا <del dir="ltr">25 USDT</del></strong>
+        </div>
+
+        <p class="card-copy">يعرض هذا القسم الخطوات التي تستخدمها بعض الصفحات لدفع الزائر إلى التسجيل والإيداع.</p>
+
+        <ol class="steps">
+          <li><b>1</b><span>إنشاء حساب جديد على منصة خارجية.</span></li>
+          <li class="promo-step">
+            <b>2</b>
+            <span>إدخال الرمز الترويجي عند التسجيل:</span>
+            <div class="copy-field promo" dir="ltr">
+              <button type="button" data-copy="promoCode">نسخ</button>
+              <input id="promoCode" value="SYA333" readonly>
+            </div>
+          </li>
+          <li class="tier-step">
+            <b>3</b><span>تحديد مستوى الإيداع المعروض:</span>
+            <p class="notice">هذه قيم توضيحية داخل المحاكاة ولا تنفذ أي عملية مالية.</p>
+            <div class="tiers" id="tiers">
+              <button class="tier is-selected" type="button" data-tier="1">
+                <span><strong dir="ltr">3 USD</strong><em>أساسي</em></span>
+                <small>Aviator وCrash · وصول قياسي</small>
+              </button>
+              <button class="tier" type="button" data-tier="2">
+                <span><strong dir="ltr">7 USD</strong><em>احترافي</em></span>
+                <small>Mines وChicken Road · مزامنة سريعة</small>
+              </button>
+              <button class="tier" type="button" data-tier="3">
+                <span><strong dir="ltr">15 USD</strong><em>أقصى</em></span>
+                <small>جميع الألعاب · واجهة AI متقدمة</small>
+              </button>
+            </div>
+          </li>
+        </ol>
+
+        <button class="primary-button demo-action" type="button">تسجيل وإيداع</button>
+        <p class="safety-note">وضع العرض فقط · لا يوجد تسجيل أو إيداع حقيقي</p>
+      </article>
+    </section>
+
+    <section class="proof-panel">
+      <p>حساب الدعم الظاهر في السيناريو: <strong dir="ltr">@FARISHACKERRR_BOT</strong></p>
+      <button class="telegram-button demo-action" type="button">إرسال لقطة الشاشة للمسؤول</button>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vip.js"></script>
+</body>
+</html>

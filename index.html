@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="NEXUS — واجهة مستقبلية لاختيار البرنامج على الهاتف."
+    />
+    <meta name="theme-color" content="#030a1b" />
+    <title>NEXUS — الواجهة السيبرانية</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <div class="grid-plane"></div>
+      <div class="aurora aurora--one"></div>
+      <div class="aurora aurora--two"></div>
+      <div class="stars" id="stars"></div>
+    </div>
+
+    <main class="app-shell" id="app">
+      <section class="boot-screen" id="bootScreen" aria-label="تحميل NEXUS">
+        <div class="boot-mark" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p class="eyebrow">واجهة NEXUS</p>
+        <h1 class="boot-title">جارٍ التهيئة</h1>
+        <div class="boot-track"><span></span></div>
+        <p class="boot-status" id="bootStatus" aria-live="polite">جارٍ تحميل الوحدات…</p>
+      </section>
+
+      <aside class="id-status-panel is-hidden" id="idStatusPanel" aria-live="polite">
+        <div class="id-status-copy">
+          <span>معرّفك</span>
+          <strong id="savedIdValue">—</strong>
+        </div>
+        <div class="connection-state">
+          <span class="offline-dot" aria-hidden="true"></span>
+          <span>غير متصل</span>
+        </div>
+        <a
+          class="connect-help"
+          href="#"
+          data-demo-action
+        >كيفية الاتصال</a>
+      </aside>
+
+      <section class="screen auth-screen is-hidden" id="authScreen" aria-labelledby="authTitle">
+        <header class="topbar">
+          <a class="brand" href="#" aria-label="NEXUS — الصفحة الرئيسية">
+            <span class="brand-glyph" aria-hidden="true">N</span>
+            <span>NEXUS</span>
+          </a>
+        </header>
+
+        <div class="hero-copy">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> دخول آمن</p>
+          <h1 id="authTitle">تسجيل الدخول إلى <span>النظام</span></h1>
+          <p>أدخل رمزًا مكوّنًا من 4 أرقام لفتح الواجهة.</p>
+        </div>
+
+        <form class="glass-panel auth-panel" id="authForm" novalidate>
+          <div class="panel-sheen" aria-hidden="true"></div>
+          <label for="codeInput">رمز الدخول</label>
+          <div class="code-field" id="codeField">
+            <input
+              id="codeInput"
+              name="code"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="4"
+              autocomplete="one-time-code"
+              aria-describedby="codeError"
+              placeholder="••••"
+            />
+            <span class="scan-line" aria-hidden="true"></span>
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img">
+                <path d="M7 10V8a5 5 0 0 1 10 0v2m-9 0h8a2 2 0 0 1 2 2v7H6v-7a2 2 0 0 1 2-2Z" />
+              </svg>
+            </span>
+          </div>
+          <p class="field-error" id="codeError" role="alert"></p>
+          <button class="primary-button" type="submit">
+            <span>متابعة</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </form>
+
+      </section>
+
+      <section class="screen programs-screen is-hidden" id="programsScreen" aria-labelledby="programsTitle">
+        <header class="topbar">
+          <a class="brand" href="#" id="resetLink" aria-label="العودة إلى شاشة الدخول">
+            <span class="brand-glyph" aria-hidden="true">N</span>
+            <span>NEXUS</span>
+          </a>
+        </header>
+
+        <div class="programs-heading">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> اختيار الوحدة</p>
+          <h1 id="programsTitle">اختر البرنامج</h1>
+          <p>جميع المؤشرات أدناه تقديرية.</p>
+        </div>
+
+        <div class="program-grid" aria-label="البرامج">
+          <article class="program-card" style="--card-delay: 0ms">
+            <div class="program-image program-image--aviator">
+              <img src="assets/aviator.webp" width="600" height="750" alt="AVIATOR" />
+              <div class="image-glint" aria-hidden="true"></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title-row">
+                <h2>AVIATOR</h2>
+                <span class="active-dot" title="مؤشر مرئي" aria-hidden="true">✓</span>
+              </div>
+              <p class="active-label">نشط <small>تلقائي</small></p>
+              <p class="activation-count"><strong>24</strong><span>عملية تفعيل<br />متبقية</span></p>
+              <button class="activate-button" type="button" data-program="AVIATOR">تفعيل</button>
+            </div>
+          </article>
+
+          <article class="program-card" style="--card-delay: 90ms">
+            <div class="program-image program-image--apple">
+              <img src="assets/apple-of-fortune.webp" width="600" height="750" alt="APPLE OF FORTUNE" />
+              <div class="image-glint" aria-hidden="true"></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title-row">
+                <h2>APPLE OF<br />FORTUNE</h2>
+                <span class="active-dot" title="مؤشر مرئي" aria-hidden="true">✓</span>
+              </div>
+              <p class="active-label">نشط <small>تلقائي</small></p>
+              <p class="activation-count"><strong>37</strong><span>عملية تفعيل<br />متبقية</span></p>
+              <button class="activate-button" type="button" data-program="APPLE OF FORTUNE">تفعيل</button>
+            </div>
+          </article>
+
+          <article class="program-card" style="--card-delay: 180ms">
+            <div class="program-image program-image--crash">
+              <img src="assets/crash.webp" width="600" height="750" alt="CRASH" />
+              <div class="image-glint" aria-hidden="true"></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title-row">
+                <h2>CRASH</h2>
+                <span class="active-dot" title="مؤشر مرئي" aria-hidden="true">✓</span>
+              </div>
+              <p class="active-label">نشط <small>تلقائي</small></p>
+              <p class="activation-count"><strong>16</strong><span>عملية تفعيل<br />متبقية</span></p>
+              <button class="activate-button" type="button" data-program="CRASH">تفعيل</button>
+            </div>
+          </article>
+        </div>
+
+      </section>
+
+      <section class="screen dashboard-screen is-hidden" id="dashboardScreen" aria-labelledby="dashboardTitle">
+        <header class="topbar">
+          <a class="brand" href="#" data-reset aria-label="العودة إلى شاشة الدخول">
+            <span class="brand-glyph" aria-hidden="true">N</span>
+            <span>NEXUS</span>
+          </a>
+        </header>
+
+        <div class="dashboard-heading">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> مركز التحكم</p>
+          <h1 id="dashboardTitle">النظام <span>جاهز</span></h1>
+          <p>البرنامج المختار: <strong id="selectedProgramName">—</strong></p>
+        </div>
+
+        <div class="glass-panel control-panel">
+          <div class="system-orbit" aria-hidden="true"><span>N</span></div>
+          <p class="system-label">نواة NEXUS</p>
+          <h2>الحصول على إشارة جديدة</h2>
+          <p>أدخل معرّف الحساب في الخطوة التالية.</p>
+          <button class="primary-button signal-button" id="signalButton" type="button">
+            <span>الحصول على إشارة</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+          <a
+            class="support-link"
+            href="#"
+            data-demo-action
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 4-8 16-4-7-6-3 18-6Z" /><path d="m9 13 5-4" /></svg>
+            مراسلة الدعم
+          </a>
+        </div>
+      </section>
+
+      <section class="screen id-screen is-hidden" id="idScreen" aria-labelledby="idTitle">
+        <header class="topbar">
+          <a class="brand" href="#" data-reset aria-label="العودة إلى شاشة الدخول">
+            <span class="brand-glyph" aria-hidden="true">N</span>
+            <span>NEXUS</span>
+          </a>
+        </header>
+
+        <div class="id-heading">
+          <p class="eyebrow"><span aria-hidden="true">✦</span> ربط الحساب</p>
+          <h1 id="idTitle">أدخل المعرّف</h1>
+          <p>استخدم معرّفًا رقميًا مكوّنًا من 10 أرقام.</p>
+        </div>
+
+        <form class="glass-panel id-form" id="idForm" novalidate>
+          <div class="id-watermark" aria-hidden="true">1XBET ID</div>
+          <label for="idInput">معرّف الحساب</label>
+          <div class="code-field id-field" id="idField">
+            <input
+              id="idInput"
+              name="account-id"
+              type="text"
+              inputmode="numeric"
+              pattern="[0-9]*"
+              maxlength="10"
+              autocomplete="off"
+              aria-describedby="idError"
+              placeholder="0000000000"
+            />
+            <span class="scan-line" aria-hidden="true"></span>
+            <span class="field-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3" /><path d="M5 20c.8-4 3-6 7-6s6.2 2 7 6" /></svg>
+            </span>
+          </div>
+          <p class="field-error" id="idError" role="alert"></p>
+          <button class="primary-button" type="submit">
+            <span>متابعة</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
+        </form>
+
+        <a
+          class="quiet-help"
+          href="#"
+          data-demo-action
+        >كيفية ربط الحساب؟</a>
+      </section>
+
+      <section class="screen result-screen is-hidden" id="resultScreen" aria-labelledby="resultTitle">
+        <header class="topbar">
+          <a class="brand" href="#" data-reset aria-label="العودة إلى شاشة الدخول">
+            <span class="brand-glyph" aria-hidden="true">N</span>
+            <span>NEXUS</span>
+          </a>
+        </header>
+
+        <div class="glass-panel result-panel">
+          <div class="error-emblem" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3 2.8 20h18.4L12 3Z" /><path d="M12 9v5m0 3h.01" /></svg>
+          </div>
+          <p class="error-code">خطأ في الحساب</p>
+          <h1 id="resultTitle">خطأ في الحساب</h1>
+          <p class="result-copy">الحالة: إصدار الحساب قديم. للمتابعة، أنشئ حسابًا جديدًا. عند التسجيل، أدخل الرمز الترويجي <strong>SYA333</strong> إلزاميًا.</p>
+
+          <div class="promo-card">
+            <div>
+              <span>الرمز الترويجي للتسجيل</span>
+              <strong>SYA333</strong>
+            </div>
+            <button type="button" id="copyPromoButton" aria-label="نسخ الرمز الترويجي SYA333">نسخ</button>
+          </div>
+
+          <a
+            class="registration-button"
+            href="#"
+            data-demo-action
+          >إنشاء حساب جديد</a>
+          <a
+            class="result-support-button"
+            href="#"
+            data-demo-action
+          >التواصل مع الدعم</a>
+        </div>
+      </section>
+
+      <div class="live-ticker is-hidden" id="liveTicker" aria-label="شريط الأحداث المتحرك">
+        <div class="ticker-window">
+          <div class="ticker-track" id="tickerTrack"></div>
+        </div>
+      </div>
+
+      <section class="live-chat is-hidden" id="liveChat" aria-label="دردشة تلقائية">
+        <header class="live-chat-header">
+          <div class="live-chat-title">
+            <span class="chat-online-dot" aria-hidden="true"></span>
+            <strong>تواصل مباشر · تلقائي</strong>
+          </div>
+        </header>
+        <div class="live-chat-messages" id="liveChatMessages" aria-live="polite"></div>
+        <form class="live-chat-form" id="liveChatForm">
+          <label class="sr-only" for="liveChatInput">رسالة</label>
+          <input
+            id="liveChatInput"
+            type="text"
+            maxlength="220"
+            autocomplete="off"
+            placeholder="اكتب سؤالك…"
+          />
+          <button type="submit" aria-label="إرسال الرسالة">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m21 4-8 16-4-7-6-3 18-6Z" />
+              <path d="m9 13 5-4" />
+            </svg>
+          </button>
+        </form>
+      </section>
+
+      <div class="transition-loader is-hidden" id="transitionLoader" aria-live="polite">
+        <div class="loader-core" aria-hidden="true"><span></span></div>
+        <p>جارٍ فتح الواجهة…</p>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite" aria-hidden="true">
+        <span class="toast-icon" aria-hidden="true">i</span>
+        <p><strong id="toastTitle">NEXUS</strong><br /><span id="toastMessage"></span></p>
+        <button type="button" id="closeToast" aria-label="إغلاق الإشعار">×</button>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
