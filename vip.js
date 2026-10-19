@@ -1,7 +1,7 @@
 const toast = document.querySelector("#toast");
 const timer = document.querySelector("#slotTimer");
 let toastTimer;
-let remainingSeconds = 13 * 60 + 31;
+let remainingSeconds = 15 * 60;
 
 function showToast(message) {
   toast.textContent = message;
@@ -40,7 +40,7 @@ document.querySelectorAll(".demo-action").forEach((button) => {
 });
 
 window.setInterval(() => {
-  if (remainingSeconds <= 0) remainingSeconds = 13 * 60 + 31;
+  if (remainingSeconds <= 0) remainingSeconds = 15 * 60;
   remainingSeconds -= 1;
   const minutes = String(Math.floor(remainingSeconds / 60)).padStart(2, "0");
   const seconds = String(remainingSeconds % 60).padStart(2, "0");
