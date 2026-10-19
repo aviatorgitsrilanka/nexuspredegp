@@ -6,6 +6,27 @@
   <meta name="theme-color" content="#041126">
   <title>NEXUS — بوابة VIP</title>
   <link rel="stylesheet" href="vip.css">
+  <style>
+    .educational-banner { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; margin: 0 0 20px; border: 1px solid #29ee8a; border-radius: 12px; color: #f5f9ff; background: #082a20; font-size: 18px; font-weight: 800; }
+    .educational-banner span { color: #29ee8a; font-size: 24px; }
+    .plans { grid-template-columns: minmax(0, 1fr); max-width: 480px; }
+    .panel { min-height: auto; }
+    .tier { position: relative; padding-left: 42px; transition: transform .18s, border-color .18s, background .18s, box-shadow .18s; }
+    .tier::after { content: ""; position: absolute; left: 13px; top: 17px; width: 16px; height: 16px; border: 1px solid #6c8395; border-radius: 50%; }
+    .tier.is-selected::after { border: 3px solid #29ee8a; box-shadow: 0 0 12px #29ee8a; }
+    button, .back-link, .brand { transition: transform .18s, filter .18s, box-shadow .18s; }
+    button:hover, .back-link:hover, .brand:hover { filter: brightness(1.18); transform: translateY(-2px); }
+    .tier:hover { border-color: #29ee8a; }
+    button:active, .back-link:active, .brand:active { transform: scale(.97); filter: brightness(1.3); }
+    button:focus-visible, a:focus-visible { outline: 2px solid #3bc8ff; outline-offset: 4px; }
+    .primary-button { margin-top: 4px; animation: button-glow 1.8s ease-in-out infinite; }
+    .tier.is-selected { animation: tier-glow 2s ease-in-out infinite; }
+    .copy-field button { animation: copy-glow 2s ease-in-out infinite; }
+    @keyframes button-glow { 50% { box-shadow: 0 0 28px rgba(46,140,255,.65); filter: brightness(1.15); } }
+    @keyframes tier-glow { 50% { box-shadow: 0 0 24px rgba(41,238,138,.32); } }
+    @keyframes copy-glow { 50% { filter: brightness(1.3); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+  </style>
 </head>
 <body>
   <div class="grid-bg" aria-hidden="true"></div>
@@ -20,6 +41,7 @@
     <a class="back-link" href="index.html" aria-label="العودة">←</a>
 
     <section class="hero">
+      <p class="educational-banner" lang="ru" dir="ltr"><span aria-hidden="true">✓</span> Учебный материал</p>
       <div class="lock-icon" aria-hidden="true">▣</div>
       <p class="eyebrow">NEXUS SECURITY LAB</p>
       <h1>مطلوب وصول <span>VIP</span></h1>
@@ -28,32 +50,6 @@
     </section>
 
     <section class="plans" aria-label="خيارات الوصول">
-      <article class="panel direct-panel">
-        <div class="panel-heading">
-          <span>ترخيص قياسي</span>
-          <strong dir="ltr">25.00 <small>USDT</small></strong>
-          <small dir="ltr">TRC-20</small>
-        </div>
-
-        <div class="qr-placeholder" style="display:flex;align-items:center;justify-content:center;background:#000;border-radius:12px;padding:12px;">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TFYUdgz4EsrXGYoX3w4zyGJeeM7wesBNM4" alt="USDT QR Code" width="140" height="140" style="border-radius:8px;">
-        </div>
-        <p style="text-align:center;font-size:11px;color:#9ca3af;margin:8px 0 0;">امسح رمز الاستجابة السريعة للدفع</p>
-
-        <label class="field-label" for="wallet">عنوان المحفظة</label>
-        <div class="copy-field" dir="ltr">
-          <button type="button" data-copy="wallet">نسخ</button>
-          <input id="wallet" value="TFYUdgz4EsrXGYoX3w4zyGJeeM7wesBNM4" readonly>
-        </div>
-
-        <ul class="features">
-          <li><i>✓</i> ترخيص لمدة 7 أيام</li>
-          <li><i>✓</i> جميع الألعاب مفتوحة</li>
-        </ul>
-
-        <a href="https://t.me/FARISHACKERRR_BOT" target="_blank" class="secondary-button" style="display:block;text-align:center;text-decoration:none;">تأكيد الدفع عبر البوت</a>
-      </article>
-
       <article class="panel sponsor-panel">
         <span class="recommended">موصى به بشدة</span>
         <div class="panel-heading green">
@@ -81,4 +77,35 @@
                 <span><strong dir="ltr">3 USD</strong><em>أساسي</em></span>
                 <small>Aviator و Crash مفتوحة · عقدة بينج قياسية</small>
               </button>
-              <button class
+              <button class="tier" type="button" data-tier="2">
+                <span><strong dir="ltr">6 USD</strong><em>احترافي</em></span>
+                <small>المستوى 1 + Mines و Chicken Road</small>
+                <small>مزامنة بيانات عالية السرعة</small>
+              </button>
+              <button class="tier" type="button" data-tier="3">
+                <span><strong dir="ltr">13 USD</strong><em>أقصى</em></span>
+                <small>جميع الألعاب مفتوحة</small>
+                <small>ذكاء اصطناعي للتعلم العميق V4.2</small>
+              </button>
+            </div>
+          </li>
+        </ol>
+        <button class="primary-button demo-action" type="button">تسجيل وإيداع</button>
+        <p class="safety-note" lang="ru" dir="ltr">Демонстрация для выступления. Регистрация, депозиты и платежи не выполняются.</p>
+      </article>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="vip.js"></script>
+  <script>
+    const tiers = [...document.querySelectorAll(".tier")];
+    document.querySelector("#tiers").setAttribute("role", "group");
+    tiers.forEach(button => {
+      button.setAttribute("aria-pressed", String(button.classList.contains("is-selected")));
+      button.addEventListener("click", () => {
+        tiers.forEach(tier => tier.setAttribute("aria-pressed", String(tier === button)));
+      });
+    });
+  </script>
+</body>
+</html>
