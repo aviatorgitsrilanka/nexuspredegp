@@ -45,33 +45,33 @@ const STORAGE_KEY = "nexuspredsyr-interface-state";
 const ACCESS_KEY = "nexuspredsyr-access-granted";
 const VALID_SCREENS = new Set(["programs", "dashboard", "id", "result"]);
 const tickerEvents = [
-  "محمد — ID 18476235453 +250 USD",
-  "عيسى — ID 18458373641 +120 USD",
-  "أحمد — ID 18490627138 +95 USD",
-  "عمر — ID 18431590762 +310 USD",
-  "خالد — ID 18472816405 +180 USD",
-  "يوسف — ID 18421343243 +145 USD",
-  "محمود — ID 18463057291 +220 USD",
-  "مصطفى — ID 18485731460 +85 USD",
-  "حسن — ID 18449268137 +275 USD",
-  "حسين — ID 18410483652 +160 USD",
-  "علي — ID 18476391024 +340 USD",
-  "إبراهيم — ID 18452940716 +110 USD",
-  "عبدالله — ID 18468025193 +205 USD",
-  "سامي — ID 18439176820 +130 USD",
-  "رامي — ID 18497532064 +290 USD",
-  "ياسر — ID 18424680931 +75 USD",
-  "فارس — ID 18481356247 +260 USD",
-  "نور — ID 18456719082 +150 USD",
-  "باسل — ID 18432847519 +195 USD",
-  "مازن — ID 18474192630 +320 USD",
+  "محمد — ID 18476235453 +250 EGP",
+  "عيسى — ID 18458373641 +120 EGP",
+  "أحمد — ID 18490627138 +95 EGP",
+  "عمر — ID 18431590762 +310 EGP",
+  "خالد — ID 18472816405 +180 EGP",
+  "يوسف — ID 18421343243 +145 EGP",
+  "محمود — ID 18463057291 +220 EGP",
+  "مصطفى — ID 18485731460 +85 EGP",
+  "حسن — ID 18449268137 +275 EGP",
+  "حسين — ID 18410483652 +160 EGP",
+  "علي — ID 18476391024 +340 EGP",
+  "إبراهيم — ID 18452940716 +110 EGP",
+  "عبدالله — ID 18468025193 +205 EGP",
+  "سامي — ID 18439176820 +130 EGP",
+  "رامي — ID 18497532064 +290 EGP",
+  "ياسر — ID 18424680931 +75 EGP",
+  "فارس — ID 18481356247 +260 EGP",
+  "نور — ID 18456719082 +150 EGP",
+  "باسل — ID 18432847519 +195 EGP",
+  "مازن — ID 18474192630 +320 EGP",
 ];
 const simulatedChatMessages = [
   {
     sender: "user",
     author: "محمد — ID 1847623545",
     avatar: "م",
-    text: "حصلت للتو على 8 إشارات ووضعت رهانات بقيمة 1 USD لكل منها. نتيجتي الآن ربح 344 USD!",
+    text: "حصلت للتو على 8 إشارات ووضعت رهانات بقيمة 1 EGP لكل منها. نتيجتي الآن ربح 344 EGP!",
   },
   {
     sender: "system",
@@ -83,7 +83,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "عيسى — ID 1845837364",
     avatar: "ع",
-    text: "لم أفهم لماذا يجب أن أبدأ برهان 100 SYP. أليس المبلغ قليلًا جدًا؟",
+    text: "لم أفهم لماذا يجب أن أبدأ برهان 100 EGP. أليس المبلغ قليلًا جدًا؟",
   },
   {
     sender: "system",
@@ -107,7 +107,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "عمر — ID 1843159076",
     avatar: "ع",
-    text: "هل يمكنني البدء برهان 1 USD؟",
+    text: "هل يمكنني البدء برهان 1 EGP؟",
   },
   {
     sender: "system",
@@ -119,7 +119,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "خالد — ID 1847281640",
     avatar: "خ",
-    text: "أي عملة يُفضّل استخدامها: USD أم SYP؟",
+    text: "أي عملة يُفضّل استخدامها: EGP أم EGP؟",
   },
   {
     sender: "system",
@@ -131,7 +131,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "يوسف — ID 1844509327",
     avatar: "ي",
-    text: "هل يمكنني البدء بمبلغ 500 SYP فقط؟",
+    text: "هل يمكنني البدء بمبلغ 500 EGP فقط؟",
   },
   {
     sender: "system",
@@ -215,7 +215,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "زيد — ID 1848640932",
     avatar: "ز",
-    text: "حددت ميزانية يومية قدرها 10 USD. هل هذا مناسب للبدء؟",
+    text: "حددت ميزانية يومية قدرها 10 EGP. هل هذا مناسب للبدء؟",
   },
   {
     sender: "system",
@@ -227,7 +227,7 @@ const simulatedChatMessages = [
     sender: "user",
     author: "طارق — ID 1842468705",
     avatar: "ط",
-    text: "وضعت خمسة رهانات بقيمة 200 SYP وربحت 1800 SYP!",
+    text: "وضعت خمسة رهانات بقيمة 200 EGP وربحت 1800 EGP!",
   },
   {
     sender: "system",
@@ -251,13 +251,13 @@ const simulatedChatMessages = [
     sender: "user",
     author: "رامي — ID 1849753206",
     avatar: "ر",
-    text: "هل يمكن الانتقال من الرهان بـ SYP إلى USD؟",
+    text: "هل يمكن الانتقال من الرهان بـ EGP إلى EGP؟",
   },
   {
     sender: "system",
     author: "NEXUS",
     avatar: "N",
-    text: "رامي — ID 1849753206، تحقّق أولًا من إعدادات عملة حسابك. لا يمكن اعتبار مبالغ USD وSYP متساوية.",
+    text: "رامي — ID 1849753206، تحقّق أولًا من إعدادات عملة حسابك. لا يمكن اعتبار مبالغ EGP وEGP متساوية.",
   },
   {
     sender: "user",
@@ -573,7 +573,7 @@ function getAutoReply(message) {
     };
   }
 
-  if (/رهان|syp|usd|مبلغ|ميزانية/.test(normalized)) {
+  if (/رهان|egp|egp|مبلغ|ميزانية/.test(normalized)) {
     return {
       sender: "system",
       author: "NEXUS تلقائي",
