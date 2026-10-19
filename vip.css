@@ -158,6 +158,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .card-copy { color: #b7c4d3; font-size: 0.8rem; line-height: 1.7; text-align: center; }
 
 .qr-placeholder { width: 100%; height: 175px; margin: 18px 0; border: 1px dashed rgba(133, 164, 198, 0.22); border-radius: 15px; background: rgba(0, 4, 12, 0.55); }
+.qr-caption { margin: -8px 0 14px; color: #748ba5; font-size: 0.68rem; text-align: center; }
 .field-label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 0.7rem; font-weight: 800; }
 .copy-field { display: flex; overflow: hidden; border: 1px solid rgba(122, 163, 205, 0.35); border-radius: 10px; background: rgba(0, 5, 14, 0.75); }
 .copy-field input { min-width: 0; width: 100%; border: 0; outline: 0; color: #dcecff; background: transparent; padding: 11px; text-align: center; font-size: 0.78rem; font-weight: 800; }
