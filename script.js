@@ -32,9 +32,22 @@ const toast = document.querySelector("#toast");
 const toastTitle = document.querySelector("#toastTitle");
 const toastMessage = document.querySelector("#toastMessage");
 const closeToast = document.querySelector("#closeToast");
-const liveTicker = document.querySelector("#liveTicker");
-const tickerTrack = document.querySelector("#tickerTrack");
 const liveChat = document.querySelector("#liveChat");
+const chatLauncher = document.querySelector("#chatLauncher");
+const chatClose = document.querySelector("#chatClose");
+let isChatOpen = false;
+
+function setChatOpen(open, restoreFocus = false) {
+  isChatOpen = open;
+  liveChat.classList.toggle("is-hidden", !open);
+  chatLauncher.classList.toggle("is-hidden", open);
+  chatLauncher.setAttribute("aria-expanded", String(open));
+  app.classList.toggle("has-open-chat", open);
+  updateLiveChatTimer(open);
+  if (open) liveChatInput.focus({ preventScroll: true });
+  else if (restoreFocus) chatLauncher.focus({ preventScroll: true });
+}
+
 const liveChatMessages = document.querySelector("#liveChatMessages");
 const liveChatForm = document.querySelector("#liveChatForm");
 const liveChatInput = document.querySelector("#liveChatInput");
@@ -44,28 +57,6 @@ const PROMO_CODE = "RKT555";
 const STORAGE_KEY = "nexuspredsyr-interface-state";
 const ACCESS_KEY = "nexuspredsyr-access-granted";
 const VALID_SCREENS = new Set(["programs", "dashboard", "id", "result"]);
-const tickerEvents = [
-  "محمد — ID 18476235453 +250 EGP",
-  "عيسى — ID 18458373641 +120 EGP",
-  "أحمد — ID 18490627138 +95 EGP",
-  "عمر — ID 18431590762 +310 EGP",
-  "خالد — ID 18472816405 +180 EGP",
-  "يوسف — ID 18421343243 +145 EGP",
-  "محمود — ID 18463057291 +220 EGP",
-  "مصطفى — ID 18485731460 +85 EGP",
-  "حسن — ID 18449268137 +275 EGP",
-  "حسين — ID 18410483652 +160 EGP",
-  "علي — ID 18476391024 +340 EGP",
-  "إبراهيم — ID 18452940716 +110 EGP",
-  "عبدالله — ID 18468025193 +205 EGP",
-  "سامي — ID 18439176820 +130 EGP",
-  "رامي — ID 18497532064 +290 EGP",
-  "ياسر — ID 18424680931 +75 EGP",
-  "فارس — ID 18481356247 +260 EGP",
-  "نور — ID 18456719082 +150 EGP",
-  "باسل — ID 18432847519 +195 EGP",
-  "مازن — ID 18474192630 +320 EGP",
-];
 const simulatedChatMessages = [
   {
     sender: "user",
@@ -395,10 +386,13 @@ function showScreen(target, options = {}) {
 
   updateIdStatus(target);
   const shouldShowLiveUi = target !== "auth";
-  liveTicker.classList.toggle("is-hidden", !shouldShowLiveUi);
-  liveChat.classList.toggle("is-hidden", !shouldShowLiveUi);
+  if (!shouldShowLiveUi) isChatOpen = false;
+  liveChat.classList.toggle("is-hidden", !shouldShowLiveUi || !isChatOpen);
+  chatLauncher.classList.toggle("is-hidden", !shouldShowLiveUi || isChatOpen);
+  chatLauncher.setAttribute("aria-expanded", String(isChatOpen));
+  app.classList.toggle("has-open-chat", shouldShowLiveUi && isChatOpen);
   app.classList.toggle("has-live-ui", shouldShowLiveUi);
-  updateLiveChatTimer(shouldShowLiveUi);
+  updateLiveChatTimer(shouldShowLiveUi && isChatOpen);
 
   window.scrollTo({ top: 0, behavior: options.instant ? "auto" : "smooth" });
 
@@ -457,37 +451,6 @@ function showToast(message, title = "NEXUS") {
 function hideToast() {
   toast.classList.remove("is-visible");
   toast.setAttribute("aria-hidden", "true");
-}
-
-function buildTicker() {
-  const fragment = document.createDocumentFragment();
-
-  for (let copy = 0; copy < 3; copy += 1) {
-    const group = document.createElement("span");
-    group.className = "ticker-group";
-    if (copy === 1) group.setAttribute("aria-hidden", "true");
-
-    tickerEvents.forEach((eventText, index) => {
-      const event = document.createElement("span");
-      event.textContent = eventText;
-      group.appendChild(event);
-
-      if (index < tickerEvents.length - 1) {
-        const separator = document.createElement("i");
-        separator.textContent = "◈";
-        separator.setAttribute("aria-hidden", "true");
-        group.appendChild(separator);
-      }
-    });
-
-    const trailingSeparator = document.createElement("i");
-    trailingSeparator.textContent = "◈";
-    trailingSeparator.setAttribute("aria-hidden", "true");
-    group.appendChild(trailingSeparator);
-    fragment.appendChild(group);
-  }
-
-  tickerTrack.replaceChildren(fragment);
 }
 
 function appendLiveMessage(message) {
@@ -602,7 +565,7 @@ function handleLiveChatSubmit(event) {
 
   autoReplyTimer = window.setTimeout(() => {
     appendLiveMessage(getAutoReply(message));
-    updateLiveChatTimer(true);
+    updateLiveChatTimer(isChatOpen && !liveChat.classList.contains("is-hidden"));
   }, 720);
 }
 
@@ -762,6 +725,11 @@ document.querySelectorAll("[data-demo-action]").forEach((control) => {
 
 copyPromoButton.addEventListener("click", copyPromoCode);
 closeToast.addEventListener("click", hideToast);
+chatLauncher.addEventListener("click", () => setChatOpen(true));
+chatClose.addEventListener("click", () => setChatOpen(false, true));
+liveChat.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") setChatOpen(false, true);
+});
 liveChatForm.addEventListener("submit", handleLiveChatSubmit);
 
 document.addEventListener("keydown", (event) => {
@@ -770,7 +738,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-buildTicker();
 initializeLiveChat();
 makeStars();
 window.setTimeout(finishBoot, 1180);
